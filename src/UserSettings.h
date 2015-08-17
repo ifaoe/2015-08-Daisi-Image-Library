@@ -24,7 +24,6 @@ struct DatabaseInfo {
 
 class UserSettings : public QSettings{
 public:
-	using QSettings::QSettings;
 	void InitSettings();
 	void AddDatabase(const QString & id, const QString & host, int port, const QString & name,const QString & user,
 			const QString & password);
