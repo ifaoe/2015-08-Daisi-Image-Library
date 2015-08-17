@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>widget_image_popup</class>
+ <widget class="QWidget" name="widget_image_popup">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>587</width>
+    <height>410</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Bildansicht</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" rowspan="3">
+    <widget class="QWidget" name="widget_image" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" rowspan="3">
+    <widget class="QFrame" name="toolbar">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="1">
+       <widget class="QToolButton" name="button_zoom_out">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="zoom-out"/>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QToolButton" name="button_zoom_in">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="zoom-in"/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QToolButton" name="button_zoom_original">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="zoom-original"/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QToolButton" name="button_zoom_fit_best">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="zoom-fit-best"/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QToolButton" name="button_save">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="document-save"/>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="6" column="1">
+       <widget class="QToolButton" name="button_quit">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="window-close"/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

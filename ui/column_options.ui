@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ColumnOptions</class>
+ <widget class="QDialog" name="ColumnOptions">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>464</width>
+    <height>416</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Spaltenauswahl</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="10" column="0">
+    <widget class="QCheckBox" name="box_stuk4_beh">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>stuk4_beh</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="13" column="0">
+    <widget class="QCheckBox" name="box_family_group">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>family_group</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QCheckBox" name="box_stuk4_ass">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>stuk4_ass</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="box_name">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>name</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="box_confidence">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>confidence</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Bestimmungssicherheit (confidence)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QCheckBox" name="box_age_year">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>age_year</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="12" column="2">
+    <widget class="QLabel" name="label_10">
+     <property name="text">
+      <string>Gruppenzugehörigkeit (group_objects)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="2">
+    <widget class="QLabel" name="label_11">
+     <property name="text">
+      <string>Familiengruppen (family_group)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Name (name)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="2">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Alter/Jahre (age_years)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QCheckBox" name="box_rcns_id">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>rcns_id</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="7" column="2">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Alter (age)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="6" column="0">
+    <widget class="QCheckBox" name="box_beh">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>beh</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QCheckBox" name="box_tp">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>tp</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="6" column="2">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Verhalten (beh)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Objekt ID (rcns_id)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="16" column="0" colspan="3">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0">
+    <widget class="QCheckBox" name="box_group_objects">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>group_objects</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Typ (tp)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QCheckBox" name="box_age">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>age</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="9" column="2">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Assoziationscodes (stuk4_ass)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="2">
+    <widget class="QLabel" name="label_9">
+     <property name="text">
+      <string>Verhaltenscodes (stuk4_beh)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QCheckBox" name="box_id_code">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="dbvalue" stdset="0">
+      <string>id_code</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttongroup_column_boxes</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QLabel" name="label_12">
+     <property name="text">
+      <string>EURING-/Stuk4-Codes (id_code)</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>ColumnOptions</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>ColumnOptions</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <buttongroups>
+  <buttongroup name="buttongroup_column_boxes">
+   <property name="exclusive">
+    <bool>false</bool>
+   </property>
+  </buttongroup>
+ </buttongroups>
+</ui>
