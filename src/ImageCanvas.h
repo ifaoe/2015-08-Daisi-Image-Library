@@ -25,6 +25,7 @@ public slots:
 	void SaveImage();
 	void ShowProgress(int value) { qDebug() << "Progress: " << value; }
 private:
+	QWidget * parent;
 	DatabaseHandler * db;
 	QgsRasterLayer * image_layer = 0;
 	QgsRasterDataProvider * image_provider = 0;
@@ -35,6 +36,9 @@ private:
 	QString current_session = "";
 	QString current_cam = "";
 	QString current_img = "";
+protected:
+	virtual int heightForWidth(int) const;
+//	void resizeEvent(QResizeEvent * event);
 };
 
 #endif /* IMAGECANVAS_H_ */

@@ -19,7 +19,6 @@ public:
 	ImagePopup(QWidget * canvas, ImageCanvas * iamge_canvas, QWidget * parent = 0);
 	virtual ~ImagePopup();
 private:
-	QVBoxLayout * canvas_layout;
 	Ui::widget_image_popup * ui;
 	QWidget * widget_canvas;
 	ImageCanvas * image_canvas;
@@ -27,11 +26,11 @@ private:
 	QList<QToolButton*> buttons;
 	QgsMapToolPan * map_pan_tool;
 private slots:
-	void close();
 	void ZoomIn() { image_canvas->zoomIn(); }
 	void ZoomOut() { image_canvas->zoomOut(); }
 	void ZoomToFullExtent() { image_canvas->zoomToFullExtent(); }
 	void ZoomOriginal() { image_canvas->zoomScale(1.0); }
+	void closeEvent(QCloseEvent * event);
 };
 
 #endif /* SRC_IMAGEPOPUP_H_ */

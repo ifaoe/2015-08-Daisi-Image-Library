@@ -11,8 +11,14 @@
 #include <QFileDialog>
 #include <qgsmapcanvasmap.h>
 
-ImageCanvas::ImageCanvas(DatabaseHandler * db, QWidget * parent) : QgsMapCanvas(parent),  db(db)  {
-	parent->setFixedSize(320,240);
+ImageCanvas::ImageCanvas(DatabaseHandler * db, QWidget * parent) : QgsMapCanvas(parent),  parent(parent), db(db)  {
+//	sizePolicy().setHeightForWidth(true);
+	QSizePolicy policy;
+	policy.setHorizontalPolicy(QSizePolicy::Expanding);
+	policy.setVerticalPolicy(QSizePolicy::Preferred);
+	policy.setHeightForWidth(true);
+	setSizePolicy(policy);
+	setBaseSize(240,240);
 	enableAntiAliasing(true);
 	setParallelRenderingEnabled( true );
 	setCanvasColor(QColor(0, 0, 0));
@@ -83,8 +89,8 @@ void ImageCanvas::CenterOnWorldPosition(const double & ux, const double & uy, co
     QgsPoint min(ux-w, uy-h);
     QgsPoint max(ux+w, uy+h);
     QgsRectangle view(min, max);
-    this->setExtent(view);
-    this->refresh();
+    setExtent(view);
+    refresh();
 }
 
 void ImageCanvas::SaveImage() {
@@ -92,4 +98,17 @@ void ImageCanvas::SaveImage() {
 	QFileInfo save_file = QFileInfo(QFileDialog::getSaveFileName(this,tr("Aktuellen Ausschnitt speichern..."),
 			default_path.absoluteFilePath("Ausschnitt.jpg"), 	tr("Images (*.png *.xpm *.jpg *.tiff *.tif *.jpeg)")));
 	map()->contentImage().save(save_file.filePath(),save_file.suffix().toStdString().c_str());
+}
+
+//void ImageCanvas::resizeEvent(QResizeEvent * event) {
+////	Q_UNUSED(event);
+//	this->QgsMapCanvas::resizeEvent(event);
+////	this->setBaseSize(parent->size());
+////	this->setFixedSize(parent->width(),parent->width());
+////	this->QWidget::resizeEvent(event);
+//	refresh();
+//}
+
+int ImageCanvas::heightForWidth( int w) const {
+	return w;
 }

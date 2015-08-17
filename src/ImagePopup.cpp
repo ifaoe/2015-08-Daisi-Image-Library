@@ -28,7 +28,7 @@ ImagePopup::~ImagePopup() {
 	delete map_pan_tool;
 }
 
-void ImagePopup::close() {
+void ImagePopup::closeEvent(QCloseEvent * event) {
+	Q_UNUSED(event);
 	widget_canvas->setLayout(ui->widget_image->layout());
-	QWidget::close();
 }
