@@ -262,12 +262,13 @@ void MainWindow::HandleSessionSelection() {
 	bool check;
 	QString project = QInputDialog::getItem(this,tr("Flug auswählen"),tr("Flug:"),
 			db->GetSessionList(),0,false,&check);
-	if (check) {
-		filter_map["session"] = QString("session='%1'").arg(project);
-	} else {
-		filter_map.remove("session");
+	if (!check)
 		return;
-	}
+	if (project.isEmpty())
+		filter_map.remove("session");
+	else
+		filter_map["session"] = QString("session='%1'").arg(project);
+
 	HandleColumnVisibility();
 	HandleFilter();
 }

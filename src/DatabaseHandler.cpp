@@ -67,6 +67,7 @@ void DatabaseHandler::GetFilterOptions(QComboBox * box, const QString & type) {
 
 QStringList DatabaseHandler::GetSessionList() {
 	QStringList return_list;
+	return_list.append(QString());
 	QString query_string = "SELECT DISTINCT project_id FROM projects ORDER BY project_id";
 	QSqlQuery query(query_string);
 	while (query.next())
