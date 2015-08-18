@@ -22,7 +22,7 @@ MainWindow::MainWindow(UserSettings * config, DatabaseHandler * db)
 
 	type_tab_bar = new QTabBar(ui->widget_types);
 	type_tab_bar->setExpanding(true);
-	type_tab_bar->setShape(QTabBar::RoundedSouth);
+	type_tab_bar->setShape(QTabBar::RoundedNorth);
 	type_tab_bar->setCurrentIndex(-1);
 //	type_tab_bar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 //	type_tab_bar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
