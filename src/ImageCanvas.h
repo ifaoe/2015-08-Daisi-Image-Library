@@ -20,6 +20,7 @@ public:
 	ImageCanvas(DatabaseHandler * db, QWidget * parent);
 	virtual ~ImageCanvas();
 	bool LoadObject(const QString & session, const QString & cam, const QString & img, const double & ux, const double & uy);
+	void UnloadObject();
 	void CenterOnWorldPosition(const double & ux, const double & uy, const double & scale);
 public slots:
 	void SaveImage();

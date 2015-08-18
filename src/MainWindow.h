@@ -36,6 +36,7 @@ private:
 	DatabaseHandler * db;
 	ImageCanvas * canvas;
 	QVBoxLayout * image_canvas_layout;
+	QTabBar * type_tab_bar;
 
 	QSqlReadOnlyTableModel * census_model = 0;
 	QMap<QString, QString> filter_map;
@@ -60,7 +61,7 @@ private:
 private slots:
 	void HandleColumnVisibility();
 	void HandleColumnChooser();
-	void HandleTypeFilter(QAbstractButton * button);
+	void HandleTypeFilter(int index);
 	void HandleSelectionChange(const QItemSelection & selected, const QItemSelection & deselected);
 	void HandleComboFilter(int index);
 	void HandleSessionSelection();

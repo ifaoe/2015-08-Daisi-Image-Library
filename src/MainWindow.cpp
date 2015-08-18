@@ -20,9 +20,27 @@ MainWindow::MainWindow(UserSettings * config, DatabaseHandler * db)
 	// TODO Auto-generated constructor stub
 	ui->setupUi(this);
 
-	filter_map["standard"] = "censor=2 AND tp!='NOSIGHT'";
+	type_tab_bar = new QTabBar(ui->widget_types);
+	type_tab_bar->setExpanding(true);
+	type_tab_bar->setShape(QTabBar::RoundedSouth);
+	type_tab_bar->setCurrentIndex(-1);
+//	type_tab_bar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+//	type_tab_bar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+	type_tab_bar->addTab(QString::fromUtf8("Alle"));
+	type_tab_bar->addTab(QString::fromUtf8("Vögel"));
+	type_tab_bar->addTab(QString::fromUtf8("Meeressäuger"));
+	type_tab_bar->addTab(QString::fromUtf8("Anthropogenes"));
+	type_tab_bar->addTab(QString::fromUtf8("Sonstiges"));
 
-	ui->frame_types->setMaximumHeight(ui->button_type_all->height());
+	type_tab_bar->setTabData(0,"%");
+	type_tab_bar->setTabData(1,"BIRD");
+	type_tab_bar->setTabData(2,"MAMMAL");
+	type_tab_bar->setTabData(3,"ANTHRO");
+	type_tab_bar->setTabData(4,"MISC");
+
+	ui->widget_types->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+	ui->widget_types->setFixedHeight(type_tab_bar->height());
+	filter_map["standard"] = "confidence<4 AND censor=2 AND tp!='NOSIGHT'";
 
 	if (!db->OpenDatabase())
 		HandleServerSelection();
@@ -58,6 +76,7 @@ MainWindow::MainWindow(UserSettings * config, DatabaseHandler * db)
 	connect(ui->button_image_popup, SIGNAL(clicked()),this,SLOT(HandleImagePopup()));
 	connect(ui->actionSpalten,SIGNAL(triggered()),this,SLOT(HandleColumnChooser()));
 	connect(ui->button_save_image,SIGNAL(clicked()),canvas, SLOT(SaveImage()));
+	connect(type_tab_bar, SIGNAL(currentChanged(int)), this, SLOT(HandleTypeFilter(int)));
 }
 
 MainWindow::~MainWindow() {
@@ -88,7 +107,6 @@ void MainWindow::SetupTables() {
 		ui->table_header_filters->setCellWidget(0,i,box);
 	}
 	ui->table_header_filters->setFixedHeight(ui->table_header_filters->horizontalHeader()->height());
-	connect(ui->button_group_types, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(HandleTypeFilter(QAbstractButton*)));
 }
 
 void MainWindow::RefreshColumnMap() {
@@ -152,8 +170,11 @@ void MainWindow::HandleSelectionChange(const QItemSelection & selected, const QI
 	current_cam.clear();
 	current_img.clear();
 
-	if (selected.isEmpty())
+	if (selected.isEmpty()) {
+		canvas->UnloadObject();
 		return;
+	}
+
 	int row = selected.indexes().at(0).row();
 	current_session = census_model->data(census_model->index(row, census_index_map["session"])).toString();
 	current_cam = census_model->data(census_model->index(row, census_index_map["cam"])).toString();
@@ -180,22 +201,17 @@ void MainWindow::HandleSelectionChange(const QItemSelection & selected, const QI
 
 void MainWindow::HandleColumnVisibility() {
 	ClearFilter();
-	if (ui->button_group_types->checkedButton() != 0)
-		ui->button_group_types->checkedButton()->setChecked(false);
 	int column;
 	for (int i=0; i<census_index_map.keys().size();i++) {
+		column = census_index_map[census_index_map.keys().at(i)];
 		if (!config->getVisibleColumns().contains(census_index_map.keys().at(i))) {
-			column = census_index_map[census_index_map.keys().at(i)];
 			ui->table_view_objects->hideColumn(column);
 			ui->table_header_filters->hideColumn(column);
+		} else {
+			ui->table_view_objects->showColumn(column);
+			ui->table_header_filters->showColumn(column);
 		}
 	}
-
-//	ui->table_header_filters->resizeColumnsToContents();
-	ui->table_header_filters->horizontalHeader()->restoreGeometry(
-			ui->table_view_objects->horizontalHeader()->saveGeometry());
-	ui->table_header_filters->horizontalHeader()->restoreState(
-			ui->table_view_objects->horizontalHeader()->saveState());
 }
 
 void MainWindow::HandleColumnChooser() {
@@ -204,17 +220,15 @@ void MainWindow::HandleColumnChooser() {
 	HandleColumnVisibility();
 }
 
-void MainWindow::HandleTypeFilter(QAbstractButton * button){
+void MainWindow::HandleTypeFilter(int index){
 	if (!db->GetDatabase()->isOpen()) return;
-	if (!ui->button_group_types->exclusive())
-		ui->button_group_types->setExclusive(true);
 
-	QString type_filter = QString("tp like '%1'").arg(button->property("dbvalue").toString());
+	QString type_filter = QString("tp like '%1'").arg(type_tab_bar->tabData(index).toString());
 	int min_width = 0;
 	QStringList::iterator i;
 	foreach (QString column, config->getVisibleColumns()) {
 		filter_boxes[column]->disconnect();
-		db->GetFilterOptions(filter_boxes[column],button->property("dbvalue").toString());
+		db->GetFilterOptions(filter_boxes[column],type_tab_bar->tabData(index).toString());
 		min_width = filter_boxes[column]->minimumSizeHint().width();
 		filter_boxes[column]->setMinimumWidth(min_width);
 		connect(filter_boxes[column], SIGNAL(currentIndexChanged(int)),this,SLOT(HandleComboFilter(int)));

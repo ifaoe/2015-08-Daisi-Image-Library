@@ -42,19 +42,13 @@ bool ImageCanvas::LoadObject(const QString & session, const QString & cam, const
 		CenterOnWorldPosition(ux, uy, 1.0);
 		return true;
 	}
-	current_session = session;
-	current_cam = cam;
-	current_img = img;
 
-	if (image_layer != 0) {
-		layer_registry->removeMapLayer(image_layer->id());
-		image_layer = 0;
-	}
-
+	UnloadObject();
 
 	QFileInfo image_file(db->GetImageLocation(session, cam, img));
 	if(!image_file.isFile() || !image_file.isReadable())
 		return false;
+
 	image_layer = new QgsRasterLayer(image_file.filePath(),image_file.fileName());
 	connect(image_layer,SIGNAL(progressUpdate(int)),this,SLOT(ShowProgress(int)));
 	image_layer->setLayerName("image");
@@ -79,7 +73,19 @@ bool ImageCanvas::LoadObject(const QString & session, const QString & cam, const
 
 	CenterOnWorldPosition(ux, uy, 1.0);
 
+	current_session = session;
+	current_cam = cam;
+	current_img = img;
+
 	return true;
+}
+
+void ImageCanvas::UnloadObject() {
+	if (image_layer != 0) {
+		layer_registry->removeMapLayer(image_layer->id());
+		image_layer = 0;
+		refresh();
+	}
 }
 
 void ImageCanvas::CenterOnWorldPosition(const double & ux, const double & uy, const double & scale) {
