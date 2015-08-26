@@ -5,6 +5,8 @@
 
 int main(int argc, char *argv[])
 {
+    QApplication::setDesktopSettingsAware(false);
+    QApplication::setStyle("GTK+");
 	QCoreApplication::setOrganizationName("ifaoe");
 	QCoreApplication::setOrganizationDomain("ifaoe.de");
 	QCoreApplication::setApplicationName("daisi-image-library");
