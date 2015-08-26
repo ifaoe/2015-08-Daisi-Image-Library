@@ -42,7 +42,8 @@ FORMS    += mainwindow.ui \
 
 unix: LIBS += -L/usr/lib/ \
             -lqgis_core\
-            -lqgis_gui
+            -lqgis_gui \
+            -lgdal
 INCLUDEPATH += /usr/include
 INCLUDEPATH += /usr/include/qgis
 DEPENDPATH += /usr/include
