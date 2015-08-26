@@ -49,7 +49,7 @@ DatabaseHandler::~DatabaseHandler() {
 }
 
 QString DatabaseHandler::GetImageLocation(const QString & session, const QString & cam, const QString & img) {
-	QString query_string = "SELECT path FROM projects WHERE flight_id='%1'";
+	QString query_string = "SELECT path FROM projects WHERE project_id='%1'";
 	QSqlQuery query(query_string.arg(session));
 	if (query.next())
 		return 	query.value(0).toString() + QString("/cam%1/geo/%2.tif").arg(cam).arg(img);
