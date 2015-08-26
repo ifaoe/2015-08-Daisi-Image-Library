@@ -10,7 +10,7 @@
 #include <QDebug>
 #include <QSqlError>
 
-DatabaseHandler::DatabaseHandler(UserSettings * cfg) : cfg(cfg){
+DatabaseHandler::DatabaseHandler(UserSettings * cfg) : config(cfg){
 	// TODO Auto-generated constructor stub
 
     db = new QSqlDatabase();
@@ -21,14 +21,14 @@ DatabaseHandler::DatabaseHandler(UserSettings * cfg) : cfg(cfg){
 }
 
 bool DatabaseHandler::OpenDatabase() {
-	if (cfg->getPreferredDatabase().isEmpty())
+	if (config->getPreferredDatabase().isEmpty())
 		return false;
 
 	if (db->isOpen()) {
 		db->close();
 	}
 
-	DatabaseInfo info = cfg->getDatabaseInfo(cfg->getPreferredDatabase());
+	DatabaseInfo info = config->getDatabaseInfo(config->getPreferredDatabase());
 	if (info.id.isEmpty())
 		return false;
     db->setHostName(info.host);

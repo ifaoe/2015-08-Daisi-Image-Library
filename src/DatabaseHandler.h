@@ -23,7 +23,7 @@ public:
 	void GetFilterOptions(QComboBox * box, const QString & type);
 	QStringList GetSessionList();
 private:
-	UserSettings * cfg = 0;
+	UserSettings * config = 0;
 	QSqlDatabase * db = 0;
 };
 
