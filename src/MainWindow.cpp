@@ -145,6 +145,8 @@ void MainWindow::SetDatabaseModels() {
 }
 
 void MainWindow::RefreshHeaderFilter() {
+	if (filter_boxes.isEmpty())
+		return;
 	int min_width;
 	QComboBox * box;
 	QString current_value;
