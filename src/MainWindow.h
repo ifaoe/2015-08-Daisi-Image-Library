@@ -58,6 +58,7 @@ private:
 	void SetupTables();
 	void RefreshHeader();
 	void RefreshColumnMap();
+	void RefreshHeaderFilter();
 private slots:
 	void HandleColumnVisibility();
 	void HandleColumnChooser();

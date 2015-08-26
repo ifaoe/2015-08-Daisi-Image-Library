@@ -144,6 +144,29 @@ void MainWindow::SetDatabaseModels() {
 	ui->table_view_objects->setModel(census_model);
 }
 
+void MainWindow::RefreshHeaderFilter() {
+	int min_width;
+	QComboBox * box;
+	QString current_value;
+	int index;
+	foreach (QString column, config->getVisibleColumns()) {
+		box  = filter_boxes[column];
+		box->disconnect();
+		current_value = box->currentText();
+		db->GetFilterOptions(box, type_tab_bar->tabData(type_tab_bar->currentIndex()).toString());
+		index = box->findText(current_value);
+		if (index > 0) {
+			box->setCurrentIndex(index);
+		} else {
+			box->setCurrentIndex(0);
+			filter_map.remove(column);
+		}
+		min_width = box->minimumSizeHint().width();
+		box->setMinimumWidth(min_width);
+		connect(box, SIGNAL(currentIndexChanged(int)),this,SLOT(HandleComboFilter(int)));
+	}
+}
+
 /*
  * SIGNALS
  */
@@ -200,7 +223,6 @@ void MainWindow::HandleSelectionChange(const QItemSelection & selected, const QI
 }
 
 void MainWindow::HandleColumnVisibility() {
-	ClearFilter();
 	int column;
 	for (int i=0; i<census_index_map.keys().size();i++) {
 		column = census_index_map[census_index_map.keys().at(i)];
@@ -212,6 +234,7 @@ void MainWindow::HandleColumnVisibility() {
 			ui->table_header_filters->showColumn(column);
 		}
 	}
+	RefreshHeaderFilter();
 }
 
 void MainWindow::HandleColumnChooser() {
@@ -224,22 +247,12 @@ void MainWindow::HandleTypeFilter(int index){
 	if (!db->GetDatabase()->isOpen()) return;
 
 	QString type_filter = QString("tp like '%1'").arg(type_tab_bar->tabData(index).toString());
-	int min_width = 0;
-	QStringList::iterator i;
-	foreach (QString column, config->getVisibleColumns()) {
-		filter_boxes[column]->disconnect();
-		db->GetFilterOptions(filter_boxes[column],type_tab_bar->tabData(index).toString());
-		min_width = filter_boxes[column]->minimumSizeHint().width();
-		filter_boxes[column]->setMinimumWidth(min_width);
-		connect(filter_boxes[column], SIGNAL(currentIndexChanged(int)),this,SLOT(HandleComboFilter(int)));
-	}
 	ui->table_header_filters->resizeColumnsToContents();
 	ui->table_header_filters->resizeRowsToContents();
 	ui->table_header_filters->setFixedHeight(ui->table_header_filters->horizontalHeader()->height()
 			+ ui->table_header_filters->rowHeight(0)+4);
-
-	ClearFilter();
 	filter_map["tp"] = type_filter;
+	RefreshHeaderFilter();
 	HandleFilter();
 	HandleHeaderChange();
 };

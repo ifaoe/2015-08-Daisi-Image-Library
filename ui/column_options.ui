@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>499</width>
+    <width>501</width>
     <height>459</height>
    </rect>
   </property>
@@ -68,7 +68,7 @@
         </attribute>
        </widget>
       </item>
-      <item row="7" column="0">
+      <item row="6" column="0">
        <widget class="QCheckBox" name="box_age_year">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -90,7 +90,7 @@
         </attribute>
        </widget>
       </item>
-      <item row="6" column="0">
+      <item row="5" column="0">
        <widget class="QCheckBox" name="box_age">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -112,7 +112,7 @@
         </attribute>
        </widget>
       </item>
-      <item row="5" column="0">
+      <item row="4" column="0">
        <widget class="QCheckBox" name="box_beh">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -134,7 +134,7 @@
         </attribute>
        </widget>
       </item>
-      <item row="11" column="0">
+      <item row="10" column="0">
        <widget class="QCheckBox" name="box_family_group">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -156,7 +156,7 @@
         </attribute>
        </widget>
       </item>
-      <item row="10" column="0">
+      <item row="9" column="0">
        <widget class="QCheckBox" name="box_group_objects">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -178,7 +178,7 @@
         </attribute>
        </widget>
       </item>
-      <item row="9" column="0">
+      <item row="8" column="0">
        <widget class="QCheckBox" name="box_stuk4_beh">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -244,29 +244,7 @@
         </attribute>
        </widget>
       </item>
-      <item row="4" column="0">
-       <widget class="QCheckBox" name="box_tp">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Typ (tp)</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-        <property name="dbvalue" stdset="0">
-         <string>tp</string>
-        </property>
-        <attribute name="buttonGroup">
-         <string notr="true">buttongroup_column_boxes</string>
-        </attribute>
-       </widget>
-      </item>
-      <item row="8" column="0">
+      <item row="7" column="0">
        <widget class="QCheckBox" name="box_stuk4_ass">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -323,7 +301,7 @@
         </attribute>
        </widget>
       </item>
-      <item row="12" column="0">
+      <item row="11" column="0">
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -337,14 +315,12 @@
        </spacer>
       </item>
      </layout>
-     <zorder>box_rcns_id</zorder>
      <zorder>box_id_code</zorder>
      <zorder>box_family_group</zorder>
      <zorder>box_stuk4_beh</zorder>
      <zorder>box_rcns_id</zorder>
      <zorder>box_confidence</zorder>
      <zorder>box_stuk4_ass</zorder>
-     <zorder>box_tp</zorder>
      <zorder>box_group_objects</zorder>
      <zorder>box_beh</zorder>
      <zorder>box_age_year</zorder>
