@@ -59,7 +59,7 @@ QString DatabaseHandler::GetImageLocation(const QString & session, const QString
 void DatabaseHandler::GetFilterOptions(QComboBox * box, const QString & type) {
 	box->clear();
 	box->addItem("-",QString("%"));
-	QString query_string = "SELECT DISTINCT %1 FROM census WHERE censor = 2 AND confidence<4 AND tp like '%2' ORDER BY %1";
+	QString query_string = "SELECT DISTINCT %1 FROM view_census WHERE censor = 2 AND confidence<4 AND tp like '%2' ORDER BY %1";
 	QSqlQuery query(query_string.arg(box->property("column").toString()).arg(type));
 	while(query.next())
 			box->addItem(query.value(0).toString(),query.value(0));
@@ -68,7 +68,7 @@ void DatabaseHandler::GetFilterOptions(QComboBox * box, const QString & type) {
 QStringList DatabaseHandler::GetSessionList() {
 	QStringList return_list;
 	return_list.append(QString());
-	QString query_string = "SELECT DISTINCT project_id FROM projects ORDER BY project_id";
+	QString query_string = "SELECT DISTINCT session FROM raw_census ORDER BY session";
 	QSqlQuery query(query_string);
 	while (query.next())
 		return_list.append(query.value(0).toString());

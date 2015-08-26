@@ -24,23 +24,23 @@ MainWindow::MainWindow(UserSettings * config, DatabaseHandler * db)
 	type_tab_bar->setExpanding(true);
 	type_tab_bar->setShape(QTabBar::RoundedNorth);
 	type_tab_bar->setCurrentIndex(-1);
-//	type_tab_bar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
-//	type_tab_bar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-	type_tab_bar->addTab(QString::fromUtf8("Alle"));
+	type_tab_bar->addTab(QString::fromUtf8("Alle Sichtungen"));
 	type_tab_bar->addTab(QString::fromUtf8("Vögel"));
 	type_tab_bar->addTab(QString::fromUtf8("Meeressäuger"));
 	type_tab_bar->addTab(QString::fromUtf8("Anthropogenes"));
 	type_tab_bar->addTab(QString::fromUtf8("Sonstiges"));
+	type_tab_bar->addTab(QString::fromUtf8("Keine Sichtung"));
 
 	type_tab_bar->setTabData(0,"%");
 	type_tab_bar->setTabData(1,"BIRD");
 	type_tab_bar->setTabData(2,"MAMMAL");
 	type_tab_bar->setTabData(3,"ANTHRO");
 	type_tab_bar->setTabData(4,"MISC");
+	type_tab_bar->setTabData(5,"NOSIGHT");
 
 	ui->widget_types->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 	ui->widget_types->setFixedHeight(type_tab_bar->height());
-	filter_map["standard"] = "confidence<4 AND censor=2 AND tp!='NOSIGHT'";
+	filter_map["standard"] = "confidence<4 AND censor=2";
 
 	if (!db->OpenDatabase())
 		HandleServerSelection();
